@@ -1,0 +1,1150 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nick BEKALE — Portfolio</title>
+  <meta name="description" content="Nick BEKALE — Entrepreneur · Développeur Web · Designer · Photographe · Formateur" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+  :root{
+    /* layout */
+    --maxw:1100px;
+    --site-margin:20px;
+    --gutter:16px;
+    --radius:14px;
+
+    /* dark theme palette (base) */
+    --bg-dark-1:#071126;
+    --bg-dark-2:#081426;
+    --card-dark:#0b1220;
+    --muted-dark:#94a3b8;
+    --accent:#0ea5a4;
+
+    /* light theme palette (accessible contrast) */
+    --bg-light:#f7fafc;
+    --card-light:#ffffff;
+    --title-light:#071127;    /* très foncé */
+    --content-light:#334155;  /* gris foncé lisible */
+    --muted-light:#475569;
+    --accent-light:#0b948f;
+
+    /* text default (dark) */
+    --title-dark:#e6eef6;
+    --content-dark:#bcd3ea;
+
+    /* visual */
+    --glass: rgba(255,255,255,0.03);
+    --glass-strong: rgba(255,255,255,0.06);
+    --focus-glow: 0 6px 24px rgba(14,165,164,0.12);
+    --btn-radius:12px;
+  }
+
+  /* reset */
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;padding:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+  body{
+    background: linear-gradient(180deg,var(--bg-dark-1), var(--bg-dark-2));
+    color:var(--title-dark);
+    line-height:1.5;
+    transition: background .25s ease, color .25s ease;
+  }
+  a{color:inherit}
+
+  /* container */
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:var(--site-margin);box-sizing:border-box;}
+
+  /* Header */
+  header{display:flex;gap:var(--gutter);align-items:flex-start;justify-content:space-between;margin-bottom:var(--site-margin);flex-wrap:wrap;position:relative;z-index:3}
+  .brand{display:flex;gap:14px;align-items:center}
+  .logo-img{width:72px;height:72px;border-radius:12px;overflow:hidden;background:#021024;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(6,10,20,0.6);flex-shrink:0;border:1px solid rgba(255,255,255,0.03)}
+  .logo-img img{width:100%;height:100%;object-fit:cover;display:block}
+
+  .brand-text{display:flex;flex-direction:column;align-items:flex-start}
+  .brand-text h1{margin:0;font-size:22px;font-weight:800;color:var(--title-dark)}
+  /* Subtitle forced EN (always) - high contrast in light mode ensured via body.light override below */
+  .brand-text .subtitle{margin-top:6px;font-size:13px;color:var(--content-dark);line-height:1.25;opacity:.95}
+  /* rotor placed below subtitle */
+  .profiles{margin-top:8px;display:block;min-height:24px}
+  .profile-item{display:inline-block;font-size:14px;font-weight:700;line-height:1;transition:opacity .25s, transform .25s;}
+
+  /* nav controls */
+  nav{display:flex;gap:10px;align-items:center}
+  nav a{color:var(--muted-dark);text-decoration:none;padding:8px 12px;border-radius:10px;font-size:14px;transition:background .15s, color .15s}
+  nav a:hover{background:var(--glass);color:var(--title-dark)}
+  .controls{display:flex;gap:8px;align-items:center;margin-left:auto}
+  .btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:var(--btn-radius);color:inherit;text-decoration:none;font-weight:600;cursor:pointer;position:relative;overflow:hidden}
+  .select{padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit}
+
+  /* hero */
+  .hero{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius);padding:22px;display:flex;gap:18px;align-items:center;margin-bottom:22px;box-shadow:0 10px 30px rgba(2,6,23,0.6);flex-wrap:wrap;position:relative;overflow:visible}
+  /* animated accent gradient bar (high-tech) */
+  .hero::before{
+    content:"";position:absolute;left:18px;right:18px;top:-8px;height:6px;border-radius:6px;
+    background: linear-gradient(90deg,#06b6d4,#0ea5a4,#8b5cf6,#f97316);
+    filter:blur(14px); opacity:.28; transform:scaleX(.98);
+  }
+  .hero-left{flex:1;min-width:260px}
+  .hero-right{width:320px;max-width:40%;display:flex;justify-content:center}
+  .portrait{width:220px;height:220px;border-radius:12px;overflow:hidden;background:#021024;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 40px rgba(2,6,23,0.6);transition:transform .6s cubic-bezier(.2,.9,.2,1)}
+  .portrait img{width:100%;height:100%;object-fit:cover;display:block;transform-origin:center center;transition:transform .6s ease}
+
+  /* subtle parallax on mouse move */
+  .hero:hover .portrait{transform:translateY(-6px) scale(1.02)}
+  .hero h2{margin:0;font-size:28px;color:var(--title-dark);font-weight:800}
+  .tagline{color:var(--content-dark);margin-top:10px;font-size:15px}
+  .cta-row{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+  .btn.primary{background:linear-gradient(90deg,var(--accent),#06b6d4);color:#022;border:none;box-shadow:var(--focus-glow);}
+
+  /* cards & sections */
+  section{margin-bottom:var(--site-margin)}
+  .card{background:var(--card-dark);padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(2,6,23,0.5);border:1px solid rgba(255,255,255,0.02)}
+  .card h3{margin:0 0 8px 0;color:var(--title-dark);font-weight:700}
+  .grid{display:grid;gap:12px}
+  .cols-3{grid-template-columns:repeat(3,1fr)}
+  .cols-4{grid-template-columns:repeat(4,1fr)}
+  h1,h2,h3,h4{color:var(--title-dark)}
+  p, li, .small-muted, .meta, .tagline{color:var(--content-dark)}
+
+  /* services lists */
+  #services .skill h4{margin:0 0 6px 0}
+  #services .skill ul{margin:0 0 0 18px;padding:0}
+  #services .skill ul li{margin:6px 0}
+
+  /* portfolio slider */
+  #portfolio .gallery-wrapper{overflow:hidden; position:relative; padding:var(--gutter) 0}
+  #portfolio .grid-slider{display:flex;gap:var(--gutter); transition:transform .6s ease; will-change:transform}
+  #portfolio .thumb{flex:0 0 calc(50% - (var(--gutter)/2)); border-radius:10px; overflow:hidden; cursor:pointer; background:#071124; transition:transform .28s ease, box-shadow .28s}
+  #portfolio .thumb img{width:100%;height:auto;display:block;transform-origin:center center;transition:transform .6s ease}
+  #portfolio .thumb:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.45)}
+  #portfolio .meta{padding:8px;color:var(--muted-dark)}
+
+  /* timeline */
+  .timeline{display:flex;flex-direction:column;gap:12px}
+  .timeline-item{display:flex;gap:12px;align-items:flex-start}
+  .timeline-item .meta-year{min-width:90px;font-weight:800;color:var(--accent)}
+  .timeline-item .meta-body h4{margin:0 0 6px 0;color:var(--title-dark);font-weight:700}
+  .timeline-item .meta-body p, .timeline-item .meta-body ul{margin:0;color:var(--content-dark)}
+  .timeline-item .meta-body ul{margin-top:6px;margin-left:18px}
+
+  /* contact */
+  .contact-grid{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+  .contact-card input, .contact-card textarea, .contact-card label{display:block;width:100%}
+  .contact-card input, .contact-card textarea{padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit;margin-top:6px;font-size:14px;transition:box-shadow .15s, border-color .15s}
+  .contact-card input:focus, .contact-card textarea:focus{box-shadow:0 6px 18px rgba(14,165,164,0.12);border-color:var(--accent)}
+  .contact-card textarea{min-height:120px; resize:vertical}
+  .contact-card label{font-size:13px;color:var(--muted-dark);margin-top:10px}
+
+  footer{margin-top:18px;text-align:center;color:var(--muted-dark);font-size:13px}
+
+  /* small screen */
+  @media (max-width:980px){
+    .hero{flex-direction:column;align-items:flex-start}
+    .hero-right{width:100%;max-width:none}
+    .cols-3{grid-template-columns:repeat(2,1fr)}
+    #portfolio .thumb{flex:0 0 calc(50% - (var(--gutter)/2))}
+  }
+  @media (max-width:700px){
+    nav{display:none}
+    .cols-3{grid-template-columns:1fr}
+    .portrait{width:160px;height:160px}
+    .hero h2{font-size:22px}
+    header{gap:8px}
+    #portfolio .thumb{flex:0 0 100%}
+    .contact-grid{flex-direction:column}
+  }
+
+  /* LIGHT MODE overrides - ensure high contrast and accessibility */
+  body.light{
+    background: linear-gradient(180deg,var(--bg-light),#e6eef6);
+    color:var(--title-light);
+  }
+  body.light .card{background:var(--card-light);box-shadow:0 8px 22px rgba(15,23,42,0.04);border:1px solid var(--card-border-light)}
+  body.light h1, body.light h2, body.light h3, body.light h4{color:var(--title-light) !important}
+  body.light p, body.light li, body.light .small-muted, body.light .meta, body.light .tagline{color:var(--content-light) !important}
+  body.light .profiles .profile-item{opacity:0.95}
+  body.light .brand-text .subtitle{color:var(--content-light) !important}
+
+  /* ensure timeline readable in light */
+  body.light #studies .timeline-item .meta-body h4,
+  body.light #experience .timeline-item .meta-body h4{color:var(--title-light) !important}
+  body.light #studies .timeline-item .meta-body p,
+  body.light #experience .timeline-item .meta-body p,
+  body.light #studies .timeline-item .meta-body ul,
+  body.light #experience .timeline-item .meta-body ul{color:var(--content-light) !important; line-height:1.6}
+
+  /* High-tech micro interactions */
+  .reveal{opacity:0;transform:translateY(12px) scale(.995);transition:opacity .65s ease, transform .65s cubic-bezier(.2,.9,.2,1)}
+  .reveal.visible{opacity:1;transform:none}
+  /* button ripple effect */
+  .btn::after{content:"";position:absolute;border-radius:50%;transform:scale(0);opacity:0;transition:transform .6s, opacity .6s}
+  .btn:active::after{transform:scale(3);opacity:0.12;background:var(--accent)}
+  /* micro animated accent on section headings */
+  .card h3 { position:relative; }
+  .card h3::after{content:"";position:absolute;left:0;bottom:-8px;width:36px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--accent),#06b6d4);opacity:.75;transform-origin:left center;transition:transform .4s}
+  .card:hover h3::after{transform:scaleX(1.6)}
+  </style>
+</head>
+<body>
+  <div class="wrap" id="page-wrap">
+    <header>
+      <div class="brand" style="align-items:center;">
+        <div class="logo-img" aria-hidden="true">
+          <img src="profile-artguru.jpeg" alt="Logo photo Nick BEKALE" />
+        </div>
+
+        <div class="brand-text">
+          <h1 id="name-title">Nick BEKALE</h1>
+
+          <!-- Subtitle forced in English -->
+          <div class="subtitle" id="site-subtitle">Think, innove and promote — Smart Solutions for a Digital Future</div>
+
+          <!-- Rotor (typing) -->
+          <div class="profiles" id="profiles-rotor" aria-live="polite" aria-atomic="true" role="status"></div>
+        </div>
+      </div>
+
+      <div class="controls" style="margin-left:auto; align-items:center;">
+        <nav aria-label="Navigation principale">
+          <a href="#about" data-i18n="nav_about">À propos</a>
+          <a href="#services" data-i18n="nav_services">Services</a>
+          <a href="#studies" data-i18n="nav_studies">Études</a>
+          <a href="#experience" data-i18n="nav_experience">Expérience</a>
+          <a href="#portfolio" data-i18n="nav_portfolio">Portfolio</a>
+          <a href="#testimonials" data-i18n="nav_testimonials">Témoignages</a>
+          <a href="#contact" class="btn" data-i18n="nav_contact">Contact</a>
+        </nav>
+
+        <button class="btn" id="theme-toggle" aria-pressed="false" title="Toggle theme">🌙</button>
+
+        <select id="lang-select" class="select" aria-label="Sélection de langue" title="Language">
+          <option value="fr">Français</option>
+          <option value="en">English</option>
+          <option value="de">Deutsch</option>
+          <option value="zh">中文</option>
+          <option value="es">Español</option>
+          <option value="ar">العربية</option>
+        </select>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero card" aria-labelledby="intro-title">
+        <div class="hero-left">
+          <h2 id="intro-title"><span data-i18n="greeting">Bonjour — je suis</span> <strong id="hero-name">Nick BEKALE</strong></h2>
+          <div class="tagline" data-i18n="tagline">J'aide les entreprises et les talents à gagner en visibilité grâce au web, au design, à la photographie et à des événements remarquables. Je conçois aussi des formations pratiques pour transmettre ces compétences.</div>
+
+          <div class="cta-row">
+            <a class="btn primary" id="contact-mail" href="mailto:nickbekale4@gmail.com" data-i18n="cta_contact">Me contacter</a>
+            <a class="btn" href="#portfolio" data-i18n="cta_portfolio">Voir mes réalisations</a>
+            <a class="btn" id="download-resume" href="#experience" data-i18n="cta_cv">Voir le CV</a>
+          </div>
+
+          <div class="contact-mini" style="margin-top:10px" data-i18n="contact_mini">
+            📧 nickbekale4@gmail.com · 📱 (+237) 656-554-352 / 675-478-606
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="portrait" aria-hidden="true">
+            <img src="profile.jpg" alt="Portrait professionnel de Nick BEKALE" onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop&crop=faces'">
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about">
+        <div class="card reveal">
+          <h3 data-i18n="about_title">À propos</h3>
+          <p style="margin-top:8px" data-i18n="about_text">
+            Entrepreneur et créatif polyvalent, j’accompagne organisations et indépendants
+            dans la création d’expériences digitales et physiques : sites web performants,
+            identités visuelles percutantes, photographies professionnelles et événements
+            mémorables. Je propose également des formations pratiques en métiers du numérique
+            et en administration.
+          </p>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section id="services">
+        <div class="card reveal">
+          <h3 data-i18n="services_title">Services</h3>
+          <p class="small-muted" style="margin-top:6px" data-i18n="services_sub">Offres principales — adaptées aux PME, ONG et entrepreneurs.</p>
+
+          <div style="margin-top:12px" class="grid cols-3">
+            <div class="skill">
+              <h4 data-i18n="svc_web">Conception & développement web</h4>
+              <ul>
+                <li>Sites web statiques</li>
+                <li>Sites vitrines</li>
+                <li>Sites e-commerce</li>
+                <li>Applications mobiles (Android & iOS)</li>
+                <li>SEO technique</li>
+                <li>Maintenance</li>
+              </ul>
+            </div>
+
+            <div class="skill">
+              <h4 data-i18n="svc_design">Design & identité visuelle</h4>
+              <ul>
+                <li>Création de logos professionnels</li>
+                <li>Chartes graphiques</li>
+                <li>Supports marketing (flyers, brochures)</li>
+                <li>Packaging & mockups</li>
+                <li>Cartes de visite & invitations</li>
+                <li>Impression sur bâche, vinyle, plexiglas</li>
+              </ul>
+            </div>
+
+            <div class="skill">
+              <h4 data-i18n="svc_photo">Photographie professionnelle</h4>
+              <ul>
+                <li>Reportage</li>
+                <li>Portrait corporate</li>
+                <li>Packshot produit</li>
+              </ul>
+            </div>
+
+            <div class="skill">
+              <h4>Administration & TIC</h4>
+              <ul>
+                <li>Rédaction de rapports & comptes rendus</li>
+                <li>Saisie de documents (mémoires, rapports)</li>
+                <li>Rédaction d'articles professionnels</li>
+                <li>Archivage & plans de classement</li>
+                <li>Création d'en-têtes / timbres</li>
+                <li>Création de CV modernes</li>
+                <li>Impression & reporting</li>
+              </ul>
+            </div>
+
+            <div class="skill">
+              <h4>Communication & Marketing (Digital)</h4>
+              <ul>
+                <li>Rédaction professionnelle</li>
+                <li>Stratégies marketing</li>
+                <li>Business Model & Business Plan</li>
+                <li>Copywriting & storytelling</li>
+                <li>Contenu pour réseaux sociaux</li>
+                <li>Gestion de campagnes publicitaires</li>
+                <li>Inbound Marketing & Community Management</li>
+                <li>Veille concurrentielle digitale</li>
+              </ul>
+            </div>
+
+            <div class="skill">
+              <h4>Autres services</h4>
+              <ul>
+                <li>Formation professionnelle</li>
+                <li>Ateliers pratiques</li>
+                <li>Accompagnement projet numérique</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STUDIES -->
+      <section id="studies">
+        <div class="card reveal">
+          <h3>Études</h3>
+          <div class="timeline" style="margin-top:12px">
+
+            <div class="timeline-item">
+              <div class="meta-year"><br>2024 <br>2025:</div>
+              <div class="meta-body">
+                <h4><br><br>Master of Social Sciences in Media, Culture and Creative Cities (MSocSc(MCCC))</h4>
+                <p>HKU University</p>
+              </div>
+              
+            </div>
+            
+            <div class="timeline-item">
+              <div class="meta-year">2023 <br>2024:</div>
+              <div class="meta-body">
+                <h4><br>Major in Language and Communication</h4>
+                <p>HKU University</p>
+              </div>
+
+            </div>
+
+            <div class="timeline-item">
+              <div class="meta-year">2022 <br>2023:</div>
+              
+              <div class="meta-body">
+                <h4><br>Language and Communication III</h4>
+                <p>HKU University</p>
+              </div>
+
+              <div class="meta-body">
+                <h4><br>Certification en Production des données cinématographique</h4>
+                <p>HKU University</p>
+              </div>
+
+              <div class="meta-body">
+                <h4><br>Création des relations avec un public</h4>
+                <p>Université Senghor</p>
+              </div>
+
+            </div>
+
+            <div class="timeline-item">
+              <div class="meta-year">2021 <br>2022:</div>
+              
+              <div class="meta-body">
+                <h4><br>Language and Communication II</h4>
+                <p>HKU University</p>
+              </div>
+
+              <div class="meta-body">
+                <h4><br>Formation Professionnelle en Marketing Digital</h4>
+                <p>CMPJ Départemental du Mfoundi</p>
+              </div>
+
+            </div>
+
+          <div class="timeline-item">
+              <div class="meta-year">2020 <br>2021:</div>
+              
+              <div class="meta-body">
+                <h4><br>Language and Communication I</h4>
+                <p>HKU University</p>
+              </div>
+              
+              <div class="meta-body">
+                <h4><br>Droit fondamental</h4>
+                <p>Université de<br>Yaoundé 1 - Soa</p>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience">
+        <div class="card reveal">
+          <h3>Expérience</h3>
+          <div class="timeline" style="margin-top:12px">
+
+            <div class="timeline-item">
+              <div class="meta-year"><br>Depuis <br>Septembre 2025</div>
+              <div class="meta-body">
+                <h4><br><br>Développeur Web, et Responsable service Marketing & Communication</h4>
+                <p><strong>La Balise - Signalisation Lumineuse</strong>
+                  Réf:  Ing. Mboumeti Beh Remy - 695.337.049</p>
+                <ul>
+                  <li>Conception et supervision de sites web (front & back).</li>
+                  <li>Elaboration des stratégie de communication marketing</li>
+                  <li>coordination des projets</li>
+                  <li>Réalisation des supports graphiques et publicitaires</li>
+                  <li>Photographie et réalisation des spots publicitaires</li>
+                  <strong>Réalisation des catalogues</strong>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="meta-year"><br>Depuis <br>Mars 2024</div>
+              <div class="meta-body">
+                <h4><br><br>Développeur Web, et Responsable service Marketing & Communication</h4>
+                <p><strong>ENGINEERING CONCEPTIONS AND TECHNOLOGIES (ECOTECH)</strong>
+                  Réf:  Ing. Mboumeti Beh Remy - 695.337.049 (Directeur Général)</p>
+                <ul>
+                  <li>Conception et supervision de sites web (front & back).</li>
+                  <li>Gestion des campagnes publicitaires et suivi des KPI.</li>
+                  <li>Animation d'ateliers de formation</li>
+                  <li>Elaboration des stratégie de communication marketing</li>
+                  <li>Animation d'ateliers de formation</li>
+                  <li>coordination des projets</li>
+                  <li>Réalisation des supports graphiques et publicitaires</li>
+                  <li>Photographie et réalisation des spots publicitaires</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="meta-year">depuis <br>Mai  2024:</div>
+              <div class="meta-body">
+                <h4><br>Formateur (Volontaire de Mission)</h4>
+                <p><strong>- PROGRAMME NATIONAL DE VOLONTARIAT DU CAMEROUN (PNV-CMR) -</strong>
+                  <br>M. BALLA Alain Patrick - 675.219.027 (Coordonateur)
+                    <br>Réf: Mme Yob née Babith - 698.272.429 (Chef CMPJ)</p>
+                <ul>
+                  <li>Formateur en informatique</li>
+                  <li>Formateur en Marketing Digital</li>
+                  <li>Formateur en Developpement Web</li>
+                  <li>Formateur en Infographie & Web Design</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="meta-year">depuis <br>Mai  2024:</div>
+              <div class="meta-body">
+                <h4><br>Formateur en informatique,Infographiste et Community Manager</h4>
+                <p><strong>- CMPJ Départemental Mfoundi -</strong><br>Réf: Mme Yob née Babith - 698.272.429 (Chef CMPJ)
+                    <br> Réf: M. MEKONGO - 656.418.614 (cadre)</p>
+                <ul>
+                  <li>Montage et Création des visuels</li>
+                  <li>Community Management des pages</li>
+                  <li>Montage et Création des visuels</li>
+                  <li>Community Management des pages</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="meta-year">depuis <br>Janvier  2023:</div>
+              <div class="meta-body">
+                <h4><br>Fondateur, Directeur Général, Chef de projet marketing, 
+                  <br>développeur web et formateur</h4>
+                <p><strong>- N-square International Consulting -</strong></p>
+                <ul>
+                  <li>Formateur</li>
+                  <li>Gestion des projets</li>
+                  <li>Elaboration des stratégies Management opérationnelle</li>
+                  <li>Conception des flyers, spots publicitaires...</li>
+                  <li>Suivie-évaluation des performances humaines</li>
+                  <li>Création et pilotage des campagnes publicitaires</li>
+                  <li>(e-)Prospection</li>
+                  <li>Recherche et gestion des partenariats</li>
+                  <li>Community Management des canaux de communication de l'entreprise</li>
+                  <li>Développement des sites</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="meta-year">octobre 2022 <br>Février 2024:</div>
+              <div class="meta-body">
+                <h4> <br>Infographiste et Social Media Manager (freelance)</h4>
+                <p><strong>- ETS Coquette Décor -</strong><br>Mme FIMBA née ZANG MENGUE - 698.060.066
+                  (Directrice Générale)</p>
+                <ul>
+                  <li>Montage et Création des visuels</li>
+                  <li>Community Management des pages</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="meta-year">Mars 2022 <br>Avril 2023:</div>
+              <div class="meta-body">
+                <h4> <br>Marketing Project manager,
+                    Community Manager, <br>Responsable des
+                    formations et formateur</h4>
+                <p><strong>- e-ROBOT ENTREPRISE -</strong><br>Réf: M. OSSOUBITA’A Cédric - 656.504.909 (Directeur
+                    Générale)</p>
+                <ul>
+                  <li>Création d'identités visuelles et supports imprimés.</li>
+                  <li>Elaboration des plan marketing et stratégies digitales</li>
+                  <li>Reportages photo et packshots produits.</li>
+                  <li>Montange et pilotage des campagnes publicitaires</li>
+                  <li>Organisation des séminaires et autres évènements</li>
+                  <li>Gestion administrative et financière</li>
+                  <li>Formations des apprenants</li>
+                  <li>Encadrement des apprenants et étudiants en stage</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="meta-year">2012 — 2015:</div>
+              <div class="meta-body">
+                <h4>Stages de vacances</h4>
+                <p><strong>- Mairie commune de Djoum -</strong><br>Ref: M. Salvador: +237 693-894-735</p>
+                <ul>
+                  <li>Classement des pièces comptables</li>
+                  <li>Enregistrement des courriers Départ/Arrivé</li>
+                  <li>Classement des documents administratifs</li>
+                  <li>Saisies des pièces administratives: rapports, chronogrammes, etc.</li>
+                  <li>Courses</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- PORTFOLIO -->
+      <section id="portfolio">
+        <div class="card reveal">
+          <h3 data-i18n="portfolio_title">Portfolio — Sélection de réalisations</h3>
+          <p class="small-muted" style="margin-top:6px" data-i18n="portfolio_sub">Clique sur une image pour agrandir (lightbox simple).</p>
+
+          <div class="gallery-wrapper" style="margin-top:12px">
+            <div id="gallery" class="grid-slider" role="list">
+              <div class="thumb" role="listitem" onclick="openLightbox(this)" data-title="Site — Artisan au Féminin" data-src="assets/web1.jpg">
+                <img src="SBM.png" alt="Site Artisan au Féminin" onerror="this.src='https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=600&auto=format&fit=crop'">
+                <div class="meta">Web <small>--- Maquette site Artisan au Féminin</small></div>
+              </div>
+
+              <div class="thumb" role="listitem" onclick="openLightbox(this)" data-title="Identité visuelle — Logo & carte" data-src="assets/design1.jpg">
+                <img src="Africana Corossol 1 .png" alt="Design identité" onerror="this.src='https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea?q=80&w=600&auto=format&fit=crop'">
+                <div class="meta">Design <small>--- Maquette Jus de Fruits (Africana)</small></div>
+              </div>
+
+              <div class="thumb" role="listitem" onclick="openLightbox(this)" data-title="Shooting produit — Lexa Parfums" data-src="assets/photo1.jpg">
+                <img src="Shooting Produits la Balise.jpeg" alt="Photo produit" onerror="this.src='https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop'">
+                <div class="meta">Photographie <small>--- Shooting Produits sécurité routière</small></div>
+              </div>
+
+              <div class="thumb" role="listitem" onclick="openLightbox(this)" data-title="Événement — Conférence" data-src="assets/event1.jpg">
+                <img src="Formations.png" alt="Event" onerror="this.src='https://images.unsplash.com/photo-1542744094-24638eff58bb?q=80&w=600&auto=format&fit=crop'">
+                <div class="meta">Événement <small>--- Organisation des formations professionnelles à N-square</small></div>
+              </div>
+
+              <div class="thumb" role="listitem" onclick="openLightbox(this)" data-title="Événement — Conférence" data-src="assets/event1.jpg">
+                <img src="Maquette diplome.png" alt="Event" onerror="this.src='https://images.unsplash.com/photo-1542744094-24638eff58bb?q=80&w=600&auto=format&fit=crop'">
+                <div class="meta">Design <small>--- Maquette Diplôme pour Artisan au féminin</small></div>
+              </div>
+
+              <div class="thumb" role="listitem" onclick="openLightbox(this)" data-title="Événement — Conférence" data-src="assets/event1.jpg">
+                <img src="Portrait Tableau.png" alt="Event" onerror="this.src='https://images.unsplash.com/photo-1542744094-24638eff58bb?q=80&w=600&auto=format&fit=crop'">
+                <div class="meta">Photographie <small>--- Tableau / Portrait</small></div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section id="testimonials">
+        <div class="card reveal">
+          <h3 data-i18n="testi_title">Témoignages & collaborations</h3>
+          <br>
+          <div style="margin-top:12px" class="grid cols-3">
+            <div class="testimonial"><strong>Belva DJOKAP</strong><div class="quote">“M. Nick, un excellent formateur qui a su allier social et professionalisme dans ma formation en e-Commerce. Merci Monsieur!”</div></div>
+            <div class="testimonial"><strong>Lǐ Wěi (李伟), 品牌总监 (Directeur de Marque)</strong><div class="quote">「Nick对内容策略有着敏锐的市场洞察力。在他的领导下，我们的内容不仅提升了品牌声誉，还显著增加了客户转化率。他是一位结果导向的内容专家。」</div></div>
+            <div class="testimonial"><strong>Gaelle WEUKAM</strong><div class="quote">« Le professionnalisme de Nick en tant que formateur est remarquable. Il a l'art de simplifier des concepts complexes (notamment le développement web) et de les rendre accessibles. 
+              Ses sessions sont interactives, bien structurées et ses participants sont rapidement opérationnels. Un excellent pédagogue. »</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="card reveal">
+          <h3 data-i18n="contact_title">Contact</h3>
+          <div style="margin-top:10px" class="contact-grid">
+            <div style="flex:1;min-width:300px">
+              <p class="small-muted" style="margin-top:6px" data-i18n="contact_prompt">Tu veux collaborer, réserver une séance photo, confier un site ou réserver une formation ? Écris-moi :</p>
+              <div style="margin-top:12px" class="contact-card">
+                <label for="name" data-i18n="lbl_name">Nom</label>
+                <input id="name" placeholder="Ton nom" />
+                <label for="email" style="margin-top:8px" data-i18n="lbl_email">Email</label>
+                <input id="email" type="email" placeholder="ton@email.com" />
+                <label for="message" style="margin-top:8px" data-i18n="lbl_message">Message</label>
+                <textarea id="message" rows="6" placeholder="Parle-moi de ton projet..."></textarea>
+                <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+                  <button class="btn primary" onclick="sendMail()" data-i18n="btn_send">Envoyer</button>
+                  <a class="btn" href="https://www.linkedin.com/in/nick-bekale-3801ab223/" target="_blank" rel="noopener">LinkedIn</a>
+                  <a class="btn" href="https://www.facebook.com/charles.bekale.9" target="_blank" rel="noopener">Facebook</a>
+                </div>
+              </div>
+            </div>
+
+            <div style="width:320px;max-width:40%;">
+              <div class="card" style="padding:12px;background:transparent;box-shadow:none;">
+                <h4 data-i18n="contact_coords">Coordonnées</h4>
+                <p class="small-muted" style="margin-top:8px" data-i18n="contact_details">
+                  📧 <a id="mail-link" href="mailto:nickbekale4@gmail.com" style="color:inherit;text-decoration:underline">nickbekale4@gmail.com</a><br>
+                  📱 (+237) 656-554-352 · 675-478-606<br>
+                  🌍 Yaoundé, Cameroun
+                </p>
+                <div style="margin-top:12px">
+                  <a class="btn" id="wa-link" href="https://wa.me/+237656554352" target="_blank" rel="noopener">WhatsApp</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      © <span id="year"></span> Nick BEKALE — Entrepreneur · Développeur · Designer · Photographe · Formateur
+    </footer>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" style="position:fixed;inset:0;background:rgba(2,6,23,0.85);display:none;align-items:center;justify-content:center;padding:20px;z-index:2000">
+    <div style="max-width:1100px;width:100%;position:relative">
+      <button onclick="closeLightbox()" style="position:absolute;right:8px;top:8px;background:transparent;border:none;color:#fff;font-size:28px;cursor:pointer">×</button>
+      <img id="lightbox-img" src="" alt="" style="width:100%;height:auto;border-radius:10px;display:block;box-shadow:0 10px 40px rgba(0,0,0,0.6)">
+      <div id="lightbox-caption" style="color:var(--muted-dark);margin-top:10px"></div>
+    </div>
+  </div>
+
+  <script>
+/*
+  Script entièrement régénéré — traduit tout le site en fonction du sélecteur de langue.
+  - Met à jour : éléments [data-i18n] (texte), placeholders pour les champs (ids: name,email,message),
+    attributs alt (éléments <img> marqués data-i18n-alt), et les liens/navs avec data-i18n.
+  - Prend en charge la direction RTL pour l'arabe.
+  - Conserve rotor (typing), slider, lightbox, thème, CV, mailto et effets initiaux.
+  - Stocke la langue choisie dans localStorage key: nb_lang.
+*/
+
+/* ---------------- TRANSLATIONS (complètes pour les tokens utilisés) ---------------- */
+const translations = {
+  fr: {
+    nav_about:'À propos', nav_services:'Services', nav_studies:'Études', nav_experience:'Expérience',
+    nav_portfolio:'Portfolio', nav_testimonials:'Témoignages', nav_contact:'Contact',
+    subtitle:'Concevoir, Innover et Valoriser — Des solutions Smarts pour un avenir Digital.', // now localized but kept English phrase if you prefer
+    greeting:'Bonjour — je suis', tagline:'J\'aide les entreprises et les talents à gagner en visibilité grâce au web, au design, à la photographie et à des événements remarquables. Je conçois aussi des formations pratiques pour transmettre ces compétences.',
+    cta_contact:'Me contacter', cta_portfolio:'Voir mes réalisations', cta_cv:'Voir le CV',
+    contact_mini:'📧 nickbekale4@gmail.com · 📱 (+237) 656-554-352 / 675-478-606',
+
+    about_title:'À propos', about_text:'Entrepreneur et créatif polyvalent, j’accompagne organisations et indépendants dans la création d’expériences digitales et physiques : sites web performants, identités visuelles percutantes, photographies professionnelles et événements mémorables. Je propose également des formations pratiques en métiers du numérique et en administration.',
+
+    services_title:'Services', services_sub:'Offres principales — adaptées aux PME, ONG et entrepreneurs.',
+    svc_web:'Conception & développement web', svc_design:'Design & identité visuelle', svc_photo:'Photographie professionnelle',
+
+    studies_title:'Études', experience_title:'Expérience',
+    portfolio_title:'Portfolio — Sélection de réalisations', portfolio_sub:'Clique sur une image pour agrandir (lightbox simple).',
+    testi_title:'Témoignages & collaborations',
+
+    contact_title:'Contact', contact_prompt:'Tu veux collaborer, réserver une séance photo, confier un site ou réserver une formation ? Écris-moi :',
+    lbl_name:'Nom', lbl_email:'Email', lbl_message:'Message', btn_send:'Envoyer',
+    contact_coords:'Coordonnées', contact_details:'📧 nickbekale4@gmail.com\n📱 (+237) 656-554-352 · 675-478-606\n🌍 Yaoundé, Cameroun',
+
+    /* placeholders */
+    ph_name:'Ton nom', ph_email:'ton@email.com', ph_message:'Parle-moi de ton projet...',
+
+    /* image alt keys */
+    alt_logo:'Logo photo Nick BEKALE', alt_portrait:'Portrait professionnel de Nick BEKALE',
+    alt_web1:'Site — Artisan au Féminin', alt_design1:'Identité visuelle — Logo & carte', alt_photo1:'Shooting produit — Lexa Parfums', alt_event1:'Événement — Conférence',
+
+    /* rotor labels (per language) */
+    rotor: ['Entrepreneur','Développeur Web','Graphic Designer','Photographe','Event Planner','Formateur en informatique']
+  },
+
+  en: {
+    nav_about:'About', nav_services:'Services', nav_studies:'Studies', nav_experience:'Experience',
+    nav_portfolio:'Portfolio', nav_testimonials:'Testimonials', nav_contact:'Contact',
+    subtitle:'Think, innove and promote — Smart Solutions for a Digital Future',
+    greeting:'Hello — I am', tagline:'I help businesses and talents gain visibility through web, design, photography and memorable events. I also design hands-on trainings to share these skills.',
+    cta_contact:'Contact me', cta_portfolio:'See my work', cta_cv:'View CV',
+    contact_mini:'📧 nickbekale4@gmail.com · 📱 (+237) 656-554-352 / 675-478-606',
+
+    about_title:'About', about_text:'A versatile entrepreneur and creative, I help organizations and independents create digital and physical experiences: high-performance websites, compelling visual identities, professional photography and memorable events. I also provide hands-on training in digital professions and administration.',
+
+    services_title:'Services', services_sub:'Main offers — adapted for SMEs, NGOs and entrepreneurs.',
+    svc_web:'Web design & development', svc_design:'Design & visual identity', svc_photo:'Professional photography',
+
+    studies_title:'Studies', experience_title:'Experience',
+    portfolio_title:'Portfolio — Selected works', portfolio_sub:'Click an image to enlarge (simple lightbox).',
+    testi_title:'Testimonials & collaborations',
+
+    contact_title:'Contact', contact_prompt:'Want to collaborate, book a photoshoot, commission a website or schedule training? Write to me:',
+    lbl_name:'Name', lbl_email:'Email', lbl_message:'Message', btn_send:'Send',
+    contact_coords:'Contact details', contact_details:'📧 nickbekale4@gmail.com\n📱 (+237) 656-554-352 · 675-478-606\n🌍 Yaoundé, Cameroon',
+
+    ph_name:'Your name', ph_email:'your@email.com', ph_message:'Tell me about your project...',
+
+    alt_logo:'Nick BEKALE logo photo', alt_portrait:'Professional portrait of Nick BEKALE',
+    alt_web1:'Site — Artisan au Féminin', alt_design1:'Visual identity — Logo & card', alt_photo1:'Product shoot — Lexa Parfums', alt_event1:'Event — Conference',
+
+    rotor: ['Entrepreneur','Web Developer','Graphic Designer','Photographer','Event Planner','Trainer']
+  },
+
+  de: {
+    nav_about:'Über', nav_services:'Leistungen', nav_studies:'Studium', nav_experience:'Erfahrung',
+    nav_portfolio:'Portfolio', nav_testimonials:'Referenzen', nav_contact:'Kontakt',
+    subtitle:'Think, innovate and promote — Smart Solutions for a Digital Future',
+    greeting:'Hallo — ich bin', tagline:'Ich helfe Unternehmen und Talenten, durch Web, Design, Fotografie und unvergessliche Events sichtbar zu werden. Ich erstelle auch praxisnahe Schulungen.',
+    cta_contact:'Kontakt', cta_portfolio:'Meine Arbeiten', cta_cv:'Lebenslauf anzeigen',
+    contact_mini:'📧 nickbekale4@gmail.com · 📱 (+237) 656-554-352 / 675-478-606',
+    about_title:'Über mich', about_text:'Vielseitiger Unternehmer und Kreativer, ich unterstütze Organisationen und Selbstständige bei der Gestaltung digitaler und physischer Erlebnisse: leistungsstarke Websites, aussagekräftige visuelle Identitäten, professionelle Fotografie und denkwürdige Events. Außerdem biete ich praxisnahe Schulungen an.',
+    services_title:'Leistungen', services_sub:'Hauptangebote — geeignet für KMU, NGOs und Unternehmer.',
+    svc_web:'Webdesign & Entwicklung', svc_design:'Design & Markenidentität', svc_photo:'Professionelle Fotografie',
+    studies_title:'Studium', experience_title:'Erfahrung',
+    portfolio_title:'Portfolio — Ausgewählte Arbeiten', portfolio_sub:'Klicke auf ein Bild, um es zu vergrößern (einfache Lightbox).',
+    testi_title:'Referenzen & Kooperationen',
+    contact_title:'Kontakt', contact_prompt:'Möchten Sie zusammenarbeiten, ein Fotoshooting buchen, eine Website beauftragen oder eine Schulung planen? Schreiben Sie mir:',
+    lbl_name:'Name', lbl_email:'E-Mail', lbl_message:'Nachricht', btn_send:'Senden',
+    contact_coords:'Kontaktdaten', contact_details:'📧 nickbekale4@gmail.com\n📱 (+237) 656-554-352 · 675-478-606\n🌍 Yaoundé, Kamerun',
+    ph_name:'Ihr Name', ph_email:'ihre@email.com', ph_message:'Erzählen Sie mir von Ihrem Projekt...',
+    alt_logo:'Nick BEKALE Logo', alt_portrait:'Professionelles Portrait von Nick BEKALE',
+    alt_web1:'Website — Artisan au Féminin', alt_design1:'Visuelle Identität — Logo & Karte', alt_photo1:'Produktfotografie — Lexa Parfums', alt_event1:'Event — Konferenz',
+    rotor: ['Unternehmer','Web-Entwickler','Grafikdesigner','Fotograf','Eventplaner','Trainer']
+  },
+
+  zh: {
+    nav_about:'关于', nav_services:'服务', nav_studies:'学习经历', nav_experience:'工作经验',
+    nav_portfolio:'作品', nav_testimonials:'推荐', nav_contact:'联系',
+    subtitle:'Think, innovate and promote — Smart Solutions for a Digital Future',
+    greeting:'你好 — 我是', tagline:'我帮助企业和人才通过网站、设计、摄影和难忘的活动提升知名度，也设计实用的培训课程。',
+    cta_contact:'联系我', cta_portfolio:'查看作品', cta_cv:'查看履歷',
+    contact_mini:'📧 nickbekale4@gmail.com · 📱 (+237) 656-554-352 / 675-478-606',
+    about_title:'关于我', about_text:'多才多艺的企业家与创意者，我帮助组织和个体打造数字与实体体验：高性能网站、吸引人的视觉识别、专业摄影和难忘的活动。同时提供面向数字职业与行政的实操培训。',
+    services_title:'服务', services_sub:'主要服务 — 适用于中小企业、非营利组织与创业者。',
+    svc_web:'网站设计与开发', svc_design:'设计与视觉识别', svc_photo:'专业摄影',
+    studies_title:'学习经历', experience_title:'工作经验',
+    portfolio_title:'作品集 — 精选', portfolio_sub:'点击图片放大（简单 Lightbox）。',
+    testi_title:'推荐与合作',
+    contact_title:'联系', contact_prompt:'想合作、预约拍摄、委托网站或安排培训？请写信给我：',
+    lbl_name:'姓名', lbl_email:'邮箱', lbl_message:'留言', btn_send:'发送',
+    contact_coords:'联系方式', contact_details:'📧 nickbekale4@gmail.com\n📱 (+237) 656-554-352 · 675-478-606\n🌍 Yaoundé, 喀麦隆',
+    ph_name:'你的名字', ph_email:'你的邮箱', ph_message:'告诉我你的项目...',
+    alt_logo:'Nick BEKALE 标志照片', alt_portrait:'Nick BEKALE 专业肖像', alt_web1:'网站 — Artisan au Féminin', alt_design1:'视觉识别 — 标志 & 名片', alt_photo1:'产品拍摄 — Lexa Parfums', alt_event1:'活动 — 会议',
+    rotor: ['企业家','网页开发者','设计师','摄影师','活动策划','培训师']
+  },
+
+  es: {
+    nav_about:'Sobre mí', nav_services:'Servicios', nav_studies:'Estudios', nav_experience:'Experiencia',
+    nav_portfolio:'Portafolio', nav_testimonials:'Testimonios', nav_contact:'Contacto',
+    subtitle:'Think, innovate and promote — Smart Solutions for a Digital Future',
+    greeting:'Hola — soy', tagline:'Ayudo a empresas y talentos a ganar visibilidad mediante la web, el diseño, la fotografía y eventos memorables. También diseño formaciones prácticas.',
+    cta_contact:'Contáctame', cta_portfolio:'Ver trabajos', cta_cv:'ver el CV',
+    contact_mini:'📧 nickbekale4@gmail.com · 📱 (+237) 656-554-352 / 675-478-606',
+    about_title:'Sobre mí', about_text:'Emprendedor y creativo versátil, acompaño a organizaciones e independientes en la creación de experiencias digitales y físicas: sitios web de alto rendimiento, identidades visuales impactantes, fotografía profesional y eventos memorables. También imparto formación práctica.',
+    services_title:'Servicios', services_sub:'Ofertas principales — adaptadas a PYMEs, ONG y emprendedores.',
+    svc_web:'Diseño y desarrollo web', svc_design:'Diseño & identidad visual', svc_photo:'Fotografía profesional',
+    studies_title:'Estudios', experience_title:'Experiencia',
+    portfolio_title:'Portafolio — Trabajos seleccionados', portfolio_sub:'Haz clic en una imagen para ampliar (lightbox simple).',
+    testi_title:'Testimonios & colaboraciones',
+    contact_title:'Contacto', contact_prompt:'¿Quieres colaborar, reservar una sesión, encargar un sitio o una formación? Escríbeme:',
+    lbl_name:'Nombre', lbl_email:'Correo', lbl_message:'Mensaje', btn_send:'Enviar',
+    contact_coords:'Datos de contacto', contact_details:'📧 nickbekale4@gmail.com\n📱 (+237) 656-554-352 · 675-478-606\n🌍 Yaoundé, Camerún',
+    ph_name:'Tu nombre', ph_email:'tu@email.com', ph_message:'Cuéntame sobre tu proyecto...',
+    alt_logo:'Foto del logo de Nick BEKALE', alt_portrait:'Retrato profesional de Nick BEKALE', alt_web1:'Sitio — Artisan au Féminin', alt_design1:'Identidad visual — Logo & tarjeta', alt_photo1:'Sesión de producto — Lexa Parfums', alt_event1:'Evento — Conferencia',
+    rotor: ['Empresario','Desarrollador Web','Diseñador Gráfico','Fotógrafo','Organizador de Eventos','Formador']
+  },
+
+  ar: {
+    nav_about:'من أنا', nav_services:'الخدمات', nav_studies:'التعليم', nav_experience:'الخبرة',
+    nav_portfolio:'أعمالي', nav_testimonials:'الشهادات', nav_contact:'اتصل',
+    subtitle:'Think, innovate and promote — Smart Solutions for a Digital Future',
+    greeting:'مرحبًا — أنا', tagline:'أساعد الشركات والمواهب على كسب الظهور من خلال الويب والتصميم والتصوير والفعاليات، كما أقدّم دورات تدريبية عملية.',
+    cta_contact:'اتصل بي', cta_portfolio:'عرض الأعمال', cta_cv:'انظر السيرة الذاتية',
+    contact_mini:'📧 nickbekale4@gmail.com · 📱 (+237) 656-554-352 / 675-478-606',
+    about_title:'من أنا', about_text:'رائد أعمال ومبدع متعدد المهارات، أساعد المؤسسات والمستقلين على إنشاء تجارب رقمية ومادية: مواقع عالية الأداء، هويات بصرية جذابة، تصوير محترف وفعاليات لا تُنسى. أقدّم أيضاً تدريبات عملية.',
+    services_title:'الخدمات', services_sub:'العروض الرئيسية — مناسبة للمؤسسات الصغيرة والمنظمات وروّاد الأعمال.',
+    svc_web:'تصميم وتطوير الويب', svc_design:'التصميم والهوية البصرية', svc_photo:'التصوير الاحترافي',
+    studies_title:'التعليم', experience_title:'الخبرة',
+    portfolio_title:'أعمالي — مختارات', portfolio_sub:'انقر على صورة للتكبير (Lightbox بسيط).',
+    testi_title:'شهادات & تعاون',
+    contact_title:'اتصل', contact_prompt:'هل تريد التعاون، حجز جلسة تصوير، تكليف موقع أو جدولة تدريب؟ اكتب لي:',
+    lbl_name:'الاسم', lbl_email:'البريد', lbl_message:'الرسالة', btn_send:'إرسال',
+    contact_coords:'بيانات الاتصال', contact_details:'📧 nickbekale4@gmail.com\n📱 (+237) 656-554-352 · 675-478-606\n🌍 Yaoundé، الكاميرون',
+    ph_name:'اسمك', ph_email:'البريد الإلكتروني', ph_message:'أخبرني عن مشروعك...',
+    alt_logo:'صورة شعار Nick BEKALE', alt_portrait:'صورة Nick BEKALE المهنية', alt_web1:'موقع — Artisan au Féminin', alt_design1:'هوية بصرية — شعار وبطاقة', alt_photo1:'تصوير منتج — Lexa Parfums', alt_event1:'حدث — مؤتمر',
+    rotor: ['رائد أعمال','مطور ويب','مصمم','مصور محترف','منظم فعاليات','مدرب']
+  }
+};
+
+/* ---------------- UTILS ---------------- */
+function normalizeLangKey(l){
+  if(!l) return 'fr';
+  if(l === 'zh-TW') return 'zh-TW';
+  if(l.startsWith('zh')) return 'zh';
+  return l.split('-')[0];
+}
+
+/* Find best translation object for key */
+function tFor(langKey){
+  return translations[langKey] || translations['en'] || translations['fr'];
+}
+
+/* ---------------- APPLY TRANSLATIONS ----------------
+   - Updates text nodes for all elements with data-i18n
+   - Updates placeholders for inputs (#name,#email,#message) using tokens ph_name,ph_email,ph_message
+   - Updates img alt attributes for elements with data-i18n-alt token OR known ids/data attributes
+   - Sets document.dir and lang for RTL support (Arabic)
+*/
+function applyTranslations(lang){
+  const key = normalizeLangKey(lang);
+  const dict = tFor(key);
+
+  // 1) Elements with data-i18n -> set textContent
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const token = el.getAttribute('data-i18n');
+    if(!token) return;
+    const value = dict[token];
+    if(value !== undefined){
+      // If element is input/textarea/button, set value or placeholder appropriately
+      const tag = el.tagName.toLowerCase();
+      if(tag === 'input' || tag === 'textarea'){
+        // some elements might use data-i18n to set placeholder
+        if(el.hasAttribute('placeholder') || token.startsWith('ph_')) {
+          el.placeholder = value;
+        } else {
+          el.value = value;
+        }
+      } else {
+        el.textContent = value;
+      }
+    }
+  });
+
+  // 2) Placeholders for known input ids (backwards-compatibility if HTML didn't have data-i18n tokens)
+  const phMap = {
+    name: dict.ph_name || '',
+    email: dict.ph_email || '',
+    message: dict.ph_message || ''
+  };
+  Object.keys(phMap).forEach(id => {
+    const el = document.getElementById(id);
+    if(el && phMap[id]) el.placeholder = phMap[id];
+  });
+
+  // 3) Image alts:
+  // - Prefer data-i18n-alt token on <img>
+  // - Otherwise try to match by id or by filename token if provided in dict
+  document.querySelectorAll('img').forEach(img => {
+    // skip if no alt token or translation available
+    const altToken = img.getAttribute('data-i18n-alt');
+    if(altToken){
+      const v = dict[altToken];
+      if(v) img.alt = v;
+      return;
+    }
+    // fallback mapping by id or data-key
+    const id = img.id || img.getAttribute('data-key') || '';
+    if(id && dict['alt_'+id]) { img.alt = dict['alt_'+id]; return; }
+    // try matching by filename hints in data-src or src
+    const src = img.getAttribute('data-src') || img.getAttribute('src') || '';
+    if(src.includes('web1') && dict.alt_web1) img.alt = dict.alt_web1;
+    else if(src.includes('design1') && dict.alt_design1) img.alt = dict.alt_design1;
+    else if(src.includes('photo1') && dict.alt_photo1) img.alt = dict.alt_photo1;
+    else if(src.includes('event1') && dict.alt_event1) img.alt = dict.alt_event1;
+    else if(img.classList.contains('logo') && dict.alt_logo) img.alt = dict.alt_logo;
+    else if(img.getAttribute('alt') === '' && dict.alt_portrait && img.closest('.portrait')) img.alt = dict.alt_portrait;
+    // otherwise leave existing alt
+  });
+
+  // 4) Force subtitle text to the translated subtitle for chosen language (user previously rejected forcing EN)
+  const subtitleEl = document.getElementById('site-subtitle');
+  if(subtitleEl && dict.subtitle) subtitleEl.textContent = dict.subtitle;
+
+  // 5) Update document language & direction
+  if(key === 'ar'){
+    document.documentElement.lang = 'ar';
+    document.documentElement.dir = 'rtl';
+    document.body.classList.add('rtl');
+  } else {
+    document.documentElement.lang = key;
+    document.documentElement.dir = 'ltr';
+    document.body.classList.remove('rtl');
+  }
+}
+
+/* ---------------- THEME (kept minimal) ---------------- */
+const themeToggle = document.getElementById('theme-toggle');
+function applyTheme(theme){
+  if(theme === 'light'){ document.body.classList.add('light'); themeToggle.textContent = '☀️'; themeToggle.setAttribute('aria-pressed','true'); }
+  else { document.body.classList.remove('light'); themeToggle.textContent = '🌙'; themeToggle.setAttribute('aria-pressed','false'); }
+  localStorage.setItem('nb_theme', theme);
+}
+themeToggle && themeToggle.addEventListener('click', ()=>{
+  applyTheme(document.body.classList.contains('light') ? 'dark' : 'light');
+});
+applyTheme(localStorage.getItem('nb_theme') || 'dark');
+
+/* ---------------- ROTOR (typing) ----------------
+   - rotorItems includes labels per language (pull from translations.rotor if present)
+*/
+const rotorEl = document.getElementById('profiles-rotor');
+let rotorIndex = 0, rotorTimer = null;
+
+function rotorLabelsFor(lang){
+  const key = normalizeLangKey(lang);
+  const dict = tFor(key);
+  if(Array.isArray(dict.rotor) && dict.rotor.length) return dict.rotor;
+  // fallback sensible array using some tokens or generic
+  return ['Entrepreneur','Web Developer','Designer','Photographer','Event Planner','Trainer'];
+}
+
+function startRotorTyping(){
+  if(!rotorEl) return;
+  if(rotorTimer) clearTimeout(rotorTimer);
+  rotorEl.innerHTML = '';
+  rotorIndex = 0;
+  typeLoop();
+}
+
+function typeLoop(){
+  const lang = normalizeLangKey(localStorage.getItem('nb_lang') || (navigator.language||'fr').split('-')[0]);
+  const labels = rotorLabelsFor(lang);
+  const text = labels[rotorIndex % labels.length] || labels[0] || '';
+  rotorEl.innerHTML = '';
+  const span = document.createElement('span');
+  span.className = 'profile-item';
+  // color mapping - optional and safe defaults
+  const colors = ['#0ea5a4','#f97316','#eab308','#8b5cf6','#f43f5e','#22c55e'];
+  span.style.color = colors[rotorIndex % colors.length];
+  rotorEl.appendChild(span);
+
+  let i = 0;
+  function typeChar(){
+    if(i <= text.length){
+      span.textContent = text.slice(0,i) + (i%2 ? '▌' : '');
+      i++;
+      rotorTimer = setTimeout(typeChar, 70);
+    } else {
+      span.textContent = text;
+      rotorTimer = setTimeout(() => deleteChar(text, text.length-1), 5000); // hold 5s
+    }
+  }
+  function deleteChar(t, idx){
+    if(idx >= 0){
+      span.textContent = t.slice(0, idx) + '▌';
+      rotorTimer = setTimeout(()=> deleteChar(t, idx-1), 60);
+    } else {
+      rotorIndex = (rotorIndex + 1) % rotorLabelsFor(lang).length;
+      rotorTimer = setTimeout(typeLoop, 180);
+    }
+  }
+  typeChar();
+}
+rotorEl && rotorEl.addEventListener('mouseenter', ()=> { if(rotorTimer) clearTimeout(rotorTimer); });
+rotorEl && rotorEl.addEventListener('mouseleave', ()=> startRotorTyping());
+
+/* ---------------- LIGHTBOX, SLIDER, CONTACT, CV (keeping behaviour) ---------------- */
+function openLightbox(el){
+  if(!el) return;
+  const src = el.getAttribute('data-src') || el.querySelector('img')?.src;
+  const title = el.getAttribute('data-title') || el.querySelector('img')?.alt || '';
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightbox-img').src = src || '';
+  document.getElementById('lightbox-img').alt = title || '';
+  document.getElementById('lightbox-caption').textContent = title || '';
+  lb.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(){ const lb = document.getElementById('lightbox'); if(!lb) return; lb.style.display='none'; document.getElementById('lightbox-img').src=''; document.body.style.overflow=''; }
+document.getElementById('lightbox')?.addEventListener('click', (e)=> { if(e.target.id==='lightbox') closeLightbox(); });
+
+function sendMail(){
+  const nameVal = document.getElementById('name')?.value || '—';
+  const emailVal = document.getElementById('email')?.value || '—';
+  const msgVal = document.getElementById('message')?.value || '—';
+  const subject = encodeURIComponent('Contact — ' + nameVal);
+  const body = encodeURIComponent('Nom: ' + nameVal + '\nEmail: ' + emailVal + '\n\nMessage:\n' + msgVal);
+  window.location.href = `mailto:nickbekale4@gmail.com?subject=${subject}&body=${body}`;
+}
+
+document.getElementById('download-resume')?.addEventListener('click', function(e){
+  e.preventDefault();
+  const vcard = [
+    'BEGIN:VCARD','VERSION:3.0','FN:Nick BEKALE','ORG:Nick BEKALE',
+    'TITLE:Entrepreneur;Développeur Web;Designer;Photographe;Formateur',
+    'TEL;TYPE=WORK,VOICE:+237656554352','TEL;TYPE=CELL,VOICE:+237675478606',
+    'EMAIL;TYPE=PREF,INTERNET:nickbekale4@gmail.com','END:VCARD'
+  ].join('\n');
+  const blob = new Blob([vcard], {type:'text/vcard'}); const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = 'Nick-BEKALE.vcf'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+});
+
+/* ---------------- PORTFOLIO SLIDER (2 by 2) ---------------- */
+const gallery = document.getElementById('gallery');
+let slideTimer = null, sliderOffset = 0;
+function computeSliderState(){
+  if(!gallery) return null;
+  const items = Array.from(gallery.children);
+  if(items.length === 0) return null;
+  const gap = parseFloat(getComputedStyle(gallery).gap || 16);
+  const itemWidth = items[0].getBoundingClientRect().width;
+  const viewport = window.innerWidth;
+  const itemsPerSlide = (viewport <= 700) ? 1 : 2;
+  const step = itemsPerSlide * (itemWidth + gap);
+  const maxOffset = Math.max(0, (items.length - itemsPerSlide) * (itemWidth + gap));
+  return {items, gap, itemWidth, itemsPerSlide, step, maxOffset};
+}
+function slidePortfolio(){
+  const state = computeSliderState(); if(!state) return;
+  sliderOffset += state.step;
+  if(sliderOffset > state.maxOffset) sliderOffset = 0;
+  gallery.style.transform = `translateX(-${sliderOffset}px)`;
+}
+function startPortfolioAuto(){ if(slideTimer) clearInterval(slideTimer); sliderOffset = 0; if(gallery) gallery.style.transform = 'translateX(0px)'; slideTimer = setInterval(slidePortfolio, 3000); }
+window.addEventListener('resize', ()=>{ sliderOffset=0; if(gallery) gallery.style.transform = 'translateX(0px)'; });
+
+/* ---------------- SMOOTH ANCHORS ---------------- */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', function(e){
+    const href = this.getAttribute('href');
+    if(href.length > 1){
+      e.preventDefault();
+      const t = document.querySelector(href);
+      if(t) t.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  });
+});
+
+/* ---------------- REVEAL ON SCROLL (simple) ---------------- */
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold: 0.12});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ---------------- LANGUAGE SELECT INITIALIZATION ---------------- */
+const langSelect = document.getElementById('lang-select');
+(function initLang(){
+  const saved = localStorage.getItem('nb_lang');
+  // Choose initial (saved > navigator > fr)
+  if(saved && [...langSelect.options].some(o => o.value === saved)) langSelect.value = saved;
+  else {
+    const nav = navigator.language || navigator.userLanguage || 'fr';
+    const short = nav === 'zh-TW' ? 'zh-TW' : nav.split('-')[0];
+    if([...langSelect.options].some(o => o.value === short)) langSelect.value = short;
+    else langSelect.value = 'fr';
+  }
+  // apply translations for initial language
+  applyTranslations(langSelect.value);
+  // start rotor & slider after translations applied
+  startRotorTyping();
+  startPortfolioAuto();
+
+  // event: change language
+  langSelect.addEventListener('change', (e)=>{
+    const val = e.target.value;
+    localStorage.setItem('nb_lang', val);
+    applyTranslations(val);
+    // restart rotor with new language immediately
+    if(rotorTimer) clearTimeout(rotorTimer);
+    rotorIndex = 0;
+    startRotorTyping();
+  });
+})();
+
+/* ---------------- storage sync (other tabs) ---------------- */
+window.addEventListener('storage', (e)=>{
+  if(e.key === 'nb_lang'){
+    const lang = e.newValue || 'fr';
+    if([...langSelect.options].some(o=>o.value===lang)) langSelect.value = lang;
+    applyTranslations(lang);
+    if(rotorTimer) clearTimeout(rotorTimer);
+    startRotorTyping();
+  }
+  if(e.key === 'nb_theme'){
+    applyTheme(e.newValue === 'light' ? 'light' : 'dark');
+  }
+});
+
+/* ---------------- INIT Year ---------------- */
+document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());
+
+/* Expose some helpers (optional) */
+window.NB = {
+  applyTranslations,
+  startRotorTyping,
+  startPortfolioAuto,
+  applyTheme
+};
+</script>
+
+
+
+</body>
+</html>
